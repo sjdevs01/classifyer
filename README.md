@@ -6,3 +6,7 @@ Steps to use this:
 4) At the start of the day, run start.bat and all your classes will be attended automatically.
 
 In case of error, the app retries once, and then shuts down.
+
+You can schedule the start.bat to run itself everyday using [Task Scheduler](https://www.thewindowsclub.com/how-to-schedule-batch-file-run-automatically-windows-7) (still works for windows 10), or use cron jobs in linux (or whatever you prefer there are like 300000 packages to choose from)
+
+Anyone can customise the app according to their needs, you can change the time too, the format being `HH/MM/SS/MS`
