@@ -1,6 +1,6 @@
 let config = {
-    'email': 'shivansh_2791@poornaprajnaschooldelhi.org',
-    'pass':'aumraj@123',
+    'email': 'email@domain.org',
+    'pass':'password',
     "routine": [
         [''], // sunday 
         ['math','geo','comp','chem'], // monday 
