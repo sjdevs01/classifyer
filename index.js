@@ -1,12 +1,6 @@
 const joinMeeting = require('./join');
-const { links, routine } = require('./config');
+const { links, routine, times} = require('./config');
 const classes = routine[new Date().getDay()];
-const times = [
-    new Date().setHours(8,5,0,0),
-    new Date().setHours(9,0,0,0),
-    new Date().setHours(10,10,0,0),
-    new Date().setHours(11,16,0,0)
-]
 if(new Date().getDay() == 0) times = [];
 
 function timeDifference(time){
