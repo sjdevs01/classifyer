@@ -4,3 +4,5 @@ Steps to use this:
 2) Next, use `npm i` in the project folder.
 3) Open config.js, enter your Email ID & Password in  the respective fields. (No need to change the time table if you're in 10th C/D, if not, then change the time table, if you're not in Class 10th, change the links too).
 4) At the start of the day, run start.bat and all your classes will be attended automatically.
+
+In case of error, the app retries once, and then shuts down.
