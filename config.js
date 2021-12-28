@@ -10,6 +10,12 @@ let config = {
         ['math','geo','edu','phy'], // friday
         ['hce','chem','hin','eng'] // saturday
     ],
+    "times": [
+        new Date().setHours(8,5,0,0), // (HH, MM, SS, MS)
+        new Date().setHours(9,0,0,0),
+        new Date().setHours(10,10,0,0),
+        new Date().setHours(11,05,0,0)
+    ],
     "links": {
         'hin':'https://meet.google.com/bor-rddz-ifr',
         'eng':'https://meet.google.com/lookup/gx2o7p7bzj',
