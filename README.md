@@ -12,4 +12,4 @@ In case of error, the app retries once, and then shuts down.
 
 You can schedule the start.bat to run itself everyday using [Task Scheduler](https://www.thewindowsclub.com/how-to-schedule-batch-file-run-automatically-windows-7) (still works for windows 10), or use cron jobs in linux (or whatever you prefer there are like 300000 packages to choose from)
 
-
+For attendance (math), Class 10 C people, change the `LINE 60` `text.includes('D')` with `text.includes('C')`, A/B people change the link & also use 'A'/'B' instead of 'D'.
