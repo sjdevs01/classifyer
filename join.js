@@ -4,10 +4,9 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 let { email, pass } = require('./config')
 
 puppeteer.use(StealthPlugin());
-const joinMeeting = async (link, leaveTime) => {
+const joinMeeting = async (link, leaveTime, classNm) => {
     try{
         const browser = await puppeteer.launch({headless:false,args:["--enable-automation"]});
-        // const browser = await puppeteer.launch({headless: true,args: ["--disable-notifications", "--mute-audio", "--enable-automation"],ignoreDefaultArgs: true});
         const page = await browser.newPage();
         const navigationPromise = page.waitForNavigation();
         await page.goto("https://accounts.google.com/");
@@ -17,7 +16,6 @@ const joinMeeting = async (link, leaveTime) => {
         await page.waitForSelector('input[type="email"]');
         await page.click('input[type="email"]');
         await navigationPromise;
-        console.log('yeah')
         await page.keyboard.type(`${email}`, { delay: 50 }); 
         await page.waitForTimeout(500);
         await page.waitForSelector("#identifierNext");
@@ -39,20 +37,41 @@ const joinMeeting = async (link, leaveTime) => {
         await page.keyboard.press('KeyD');
         await page.keyboard.up('ControlLeft');
         await page.waitForTimeout(1000);
-        
-        // Join Now
         for (i=1; i<=7; i++) {
             await page.keyboard.press('Tab');
             await page.waitForTimeout(100);
         }
         await page.keyboard.press('Enter');
         await navigationPromise;
-        console.log(leaveTime)
         setTimeout(async () => {
-            await browser.close();
+            if(classNm == 'math'){
+                await page.goto("https://docs.google.com/forms/d/e/1FAIpQLSf98lz9Z0qGd6uqKxem5miuZSjkZV7D8jgJgg0l0J9-r2NQJw/viewform")
+                await navigationPromise;
+                await page.waitForSelector('input[type="text"]');
+                await page.click('input[type="text"]');
+                await navigationPromise;
+                await page.evaluate( () => document.querySelector('input[type="text"]').value = "")
+                await page.keyboard.type(`Shivansh Jaiswal`, { delay: 50 });
+                await page.waitForTimeout(500);
+                let options = await page.$$('.docssharedWizToggleLabeledLabelWrapper');
+                options.forEach(async  i => {
+                    let text = await (await i.getProperty('textContent')).jsonValue();
+                    console.log(text)
+                    if(text.includes('D')) {
+                        await i.click();
+                    }
+                })
+                await page.waitForTimeout(500);
+                await page.waitForSelector('div[role="button"]');
+                await page.click('div[role="button"]');
+                await browser.close();
+            }else{
+                await browser.close();
+            }
         }, leaveTime)
+        return 200;
     }catch(err){
-        console.log(err)
+        return 400;
     }
 }
 
